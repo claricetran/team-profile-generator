@@ -1,7 +1,8 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
+const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Manager = require("./lib/Manager");
 const generateHTML = require("./util/generateHtml");
 const team = [];
 let askAbout = "Manager";
@@ -38,8 +39,7 @@ function gatherTeam() {
 					askIntern(answers);
 					break;
 				default:
-					console.log("Building team complete. Exiting application. Generating HTML.");
-					generateHTML(team);
+					console.log("That's not a valid role.");
 					break;
 			}
 		});
@@ -95,8 +95,15 @@ function menuSelect() {
 			choices: menuOptions,
 		})
 		.then((answers) => {
-			askAbout = answers.menuOptions;
-			gatherTeam();
+			askAbout = answers.ask;
+			if (answers.ask == "Done Building Team") {
+				console.log("Building team complete. Exiting application.");
+				fs.writeFile("./dist/teamProfile.html", generateHTML(team), (err) =>
+					err ? console.log(err) : console.log("teamProfile.html successfully generated.")
+				);
+			} else {
+				gatherTeam();
+			}
 		});
 }
 
