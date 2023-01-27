@@ -25,6 +25,15 @@ function gatherTeam() {
 				type: "input",
 				name: "email",
 				message: `What is the ${askAbout}'s email?`,
+				validate(value) {
+					const pass = value.match(
+						/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+					);
+					if (pass) {
+						return true;
+					}
+					return "Please enter a valid email. (example@gmail.com)";
+				},
 			},
 		])
 		.then((answers) => {
@@ -51,6 +60,13 @@ function askManager(genQs) {
 			type: "input",
 			name: "officeNumber",
 			message: "What is the Manager's office number?",
+			validate(value) {
+				const pass = value.match(/^[0-9]+$/);
+				if (pass) {
+					return true;
+				}
+				return "Please enter a valid room number.";
+			},
 		})
 		.then((answers) => {
 			const manager = new Manager(genQs.name, genQs.id, genQs.email, answers.officeNumber);
@@ -72,6 +88,7 @@ function askEngineer(genQs) {
 			menuSelect();
 		});
 }
+
 function askIntern(genQs) {
 	inquirer
 		.prompt({
