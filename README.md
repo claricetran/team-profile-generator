@@ -23,6 +23,8 @@ This is a command-line application that takes in user input about a team consist
 
 To use this application, the user inputs the name, employee id, and email address of the the employee as prompted. Based on if the employee's role is a Manager, Engineer, or Intern, they answer an additional question regarding that team member. After answering a set of questions for one team member, the user can select if they woud like to add another Engineer, another Intern, or if they are done building the team. After the user selects that they are done building the team, then application will exit. In a new folder called 'dist', the teamProfile.html will be generated.
 
+![usage image](https://github.com/claricetran/team-profile-generator/blob/main/assets/images/teamprofilegenerator.gif?raw=true)
+
 ## Credits
 
 Thanks to [Joe](https://github.com/Rufasa85) for the starter code.
