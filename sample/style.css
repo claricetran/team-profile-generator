@@ -1,0 +1,24 @@
+.team-heading {
+	background-color: peachpuff;
+}
+
+.container {
+	margin: 0;
+}
+.row {
+	width: 100vw;
+}
+
+.team-area {
+	display: flex;
+	flex-flow: row wrap;
+}
+.employee-card {
+	margin: 15px;
+	min-width: 300px;
+	box-shadow: 5px 5px 10px lightslategray;
+}
+
+.card-header {
+	background-color: lightsteelblue;
+}
